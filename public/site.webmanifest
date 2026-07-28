@@ -1,0 +1,16 @@
+{
+	"name": "HiCo Race Timing",
+  "short_name": "HiCo",
+  "description": "Race results and chip timing services",
+  "start_url": "/events/results",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#3a312a",
+  "background_color": "#211a15",
+  "icons": [
+    { "src": "/assets/images/logos/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/images/logos/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/images/logos/maskable-icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
