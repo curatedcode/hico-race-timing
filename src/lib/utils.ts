@@ -38,8 +38,8 @@ export function ordinalSuffix(num: number) {
 }
 
 export const INTERNAL_HOSTS = new Set([
-	"www.hicoracetiming.com",
-	"hicoracetiming.com",
+	"www.hicoracetiming.zackaryf.com",
+	"hicoracetiming.zackaryf.com",
 	"localhost",
 	"127.0.0.1",
 ]);

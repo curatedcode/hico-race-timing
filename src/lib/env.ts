@@ -5,7 +5,6 @@ export const env = createEnv({
 	server: {
 		DATABASE_URL: z.string().min(1),
 	},
-
 	/**
 	 * The prefix that client-side variables must have. This is enforced both at
 	 * a type-level and at runtime.
@@ -13,7 +12,7 @@ export const env = createEnv({
 	clientPrefix: "VITE_",
 
 	client: {
-		VITE_APP_TITLE: z.string().min(1).optional(),
+		VITE_BASE_URL: z.url(),
 	},
 
 	/**

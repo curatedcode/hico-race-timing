@@ -10,6 +10,7 @@ import {
 	createTRPCOptionsProxy,
 } from "@trpc/tanstack-react-query";
 import SuperJSON from "superjson";
+import { env } from "#/lib/env";
 import type { AppRouter } from "#/server/api/root";
 import { createQueryClient } from "./query-client";
 
@@ -94,5 +95,5 @@ export function TRPCReactProvider({
 
 function getBaseUrl() {
 	if (typeof window !== "undefined") return window.location.origin;
-	return `http://localhost:${process.env.PORT ?? 3000}`;
+	return env.VITE_BASE_URL;
 }
