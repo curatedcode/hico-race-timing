@@ -51,7 +51,11 @@ export const trpcClient = createTRPCClient<AppRouter>({
 		}),
 		httpBatchStreamLink({
 			transformer: SuperJSON,
-			url: `${getBaseUrl()}/api/trpc`,
+			url: (() => {
+				const u = `${getBaseUrl()}/api/trpc`;
+				console.log("[TRPC] server-side calling:", u);
+				return u;
+			})(),
 			headers: () => {
 				const headers = new Headers();
 				headers.set("x-trpc-source", "tanstack-start-react");
