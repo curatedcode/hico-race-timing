@@ -1,15 +1,8 @@
 @import 'tailwindcss' source("../");
 @plugin '@tailwindcss/typography';
 
+@import "@fontsource-variable/lexend";
 @import 'tw-animate-css';
-
-@custom-variant dark (&:is(.dark *));
-
-@font-face {
-	font-family: "Lexend";
-	font-display: swap;
-	src: url("/assets/fonts/lexend.ttf");
-}
 
 @theme inline {
 	--radius-sm: calc(var(--radius) - 4px);

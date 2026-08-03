@@ -86,13 +86,6 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 				sizes: "180x180",
 			},
 			{ rel: "manifest", href: "/site.webmanifest" },
-			{
-				rel: "preload",
-				as: "font",
-				href: "/assets/fonts/lexend.ttf",
-				type: "font/ttf",
-				crossOrigin: "anonymous",
-			},
 		],
 	}),
 	shellComponent: RootDocument,
