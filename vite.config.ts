@@ -12,10 +12,6 @@ const config = defineConfig({
 		devtools(),
 		tailwindcss(),
 		tanstackStart({
-			prerender: {
-				enabled: true,
-				crawlLinks: true,
-			},
 			sitemap: {
 				enabled: true,
 				host: "https://hicoracetiming.zackaryf.com",
