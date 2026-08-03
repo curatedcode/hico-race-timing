@@ -7,11 +7,10 @@
  * need to use are documented accordingly near the end.
  */
 
-import { initTRPC, TRPCError } from "@trpc/server";
+import { initTRPC } from "@trpc/server";
 import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import superjson from "superjson";
 import { ZodError } from "zod";
-import { auth } from "#/server/better-auth";
 import { db } from "#/server/db";
 
 /**
@@ -26,16 +25,15 @@ import { db } from "#/server/db";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
-	const session = await auth.api.getSession({
-		headers: opts.req.headers,
-	});
+export function createContextInner(_opts: { headers: Headers }) {
 	return {
 		db,
-		session,
-		...opts.req.headers,
 	};
-};
+}
+
+export async function createTRPCContext(opts: FetchCreateContextFnOptions) {
+	return createContextInner({ headers: opts.req.headers });
+}
 
 /**
  * 2. INITIALIZATION
@@ -119,16 +117,16 @@ export const publicProcedure = t.procedure.use(timingMiddleware);
  *
  * @see https://trpc.io/docs/procedures
  */
-export const protectedProcedure = t.procedure
-	.use(timingMiddleware)
-	.use(({ ctx, next }) => {
-		if (!ctx.session?.user) {
-			throw new TRPCError({ code: "UNAUTHORIZED" });
-		}
-		return next({
-			ctx: {
-				// infers the `session` as non-nullable
-				session: { ...ctx.session, user: ctx.session.user },
-			},
-		});
-	});
+// export const protectedProcedure = t.procedure
+// 	.use(timingMiddleware)
+// 	.use(({ ctx, next }) => {
+// 		if (!ctx.session?.user) {
+// 			throw new TRPCError({ code: "UNAUTHORIZED" });
+// 		}
+// 		return next({
+// 			ctx: {
+// 				// infers the `session` as non-nullable
+// 				session: { ...ctx.session, user: ctx.session.user },
+// 			},
+// 		});
+// 	});

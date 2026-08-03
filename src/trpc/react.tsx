@@ -11,7 +11,8 @@ import {
 } from "@trpc/tanstack-react-query";
 import SuperJSON from "superjson";
 import { env } from "#/lib/env";
-import type { AppRouter } from "#/server/api/root";
+import { type AppRouter, appRouter } from "#/server/api/root";
+import { createContextInner as createTRPCServerContext } from "#/server/api/trpc";
 import { createQueryClient } from "./query-client";
 
 let clientQueryClientSingleton: QueryClient | undefined;
@@ -31,10 +32,17 @@ export const { TRPCProvider, useTRPC } = createTRPCContext<AppRouter>();
 export function getContext() {
 	const queryClient = getQueryClient();
 
-	const serverHelpers = createTRPCOptionsProxy({
-		client: trpcClient,
-		queryClient,
-	});
+	const serverHelpers =
+		typeof window === "undefined"
+			? createTRPCOptionsProxy({
+					router: appRouter,
+					ctx: createTRPCServerContext({ headers: new Headers() }),
+					queryClient,
+				})
+			: createTRPCOptionsProxy({
+					client: trpcClient,
+					queryClient,
+				});
 
 	return {
 		queryClient,
