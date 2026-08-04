@@ -1,8 +1,10 @@
 import { createEnv } from "@t3-oss/env-core";
-import dotenv from "dotenv";
+import { createIsomorphicFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-dotenv.config();
+const getRuntime = createIsomorphicFn()
+	.server(() => process.env)
+	.client(() => import.meta.env);
 
 export const env = createEnv({
 	server: {
@@ -24,12 +26,7 @@ export const env = createEnv({
 	 * What object holds the environment variables at runtime. This is usually
 	 * `process.env` or `import.meta.env`.
 	 */
-	runtimeEnv: {
-		DATABASE_URL: process.env.DATABASE_URL,
-		BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
-		BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
-		VITE_BASE_URL: import.meta.env.VITE_BASE_URL,
-	},
+	runtimeEnv: getRuntime(),
 
 	/**
 	 * By default, this library will feed the environment variables directly to
