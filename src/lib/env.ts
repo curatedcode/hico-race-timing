@@ -1,6 +1,7 @@
 import { createEnv } from "@t3-oss/env-core";
 import { createIsomorphicFn } from "@tanstack/react-start";
 import { z } from "zod";
+import "dotenv/config";
 
 const getRuntime = createIsomorphicFn()
 	.server(() => process.env)
