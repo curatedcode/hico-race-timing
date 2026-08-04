@@ -1,7 +1,7 @@
 @import 'tailwindcss' source("../");
 @plugin '@tailwindcss/typography';
-
 @import "@fontsource-variable/lexend";
+
 @import 'tw-animate-css';
 
 @theme inline {
@@ -85,7 +85,7 @@
 	--scrollbar-thumb-hover: oklch(41.2% 0.0111 280.9);
 	--scrollbar-thumb-active: oklch(49.9% 0.0143 280.9);
 
-	--font-display: "Lexend", system-ui, sans-serif;
+	--font-display: "Lexend Variable", system-ui, sans-serif;
 }
 
 @layer base {
