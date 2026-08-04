@@ -1,6 +1,6 @@
-import { env } from "#/lib/env";
 import { betterAuth } from "better-auth";
 import { tanstackStartCookies } from "better-auth/tanstack-start";
+import { env } from "#/lib/env";
 
 export const auth = betterAuth({
 	emailAndPassword: {
@@ -8,5 +8,5 @@ export const auth = betterAuth({
 	},
 	plugins: [tanstackStartCookies()],
 	baseURL: env.BETTER_AUTH_URL,
-	secret: env.BETTER_AUTH_SECRET
+	secret: env.BETTER_AUTH_SECRET,
 });
