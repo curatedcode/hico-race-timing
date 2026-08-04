@@ -20,7 +20,7 @@ export const env = createEnv({
 	clientPrefix: "VITE_",
 
 	client: {
-		VITE_BASE_URL: z.url(),
+		// VITE_BASE_URL: z.url(),
 	},
 
 	/**
