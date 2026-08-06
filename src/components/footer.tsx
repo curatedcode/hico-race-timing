@@ -64,7 +64,7 @@ export function Footer() {
 						info@hicoracetiming.com
 					</a>
 				</div>
-				<div className="flex max-w-xs flex-col gap-1">
+				<div className="flex max-w-sm flex-col gap-1 md:max-w-xs">
 					<span className="mb-2 font-medium">GET NOTIFIED</span>
 					<p>Get updates on upcoming events, race news, and more.</p>
 					<motion.div>
@@ -103,18 +103,17 @@ export function Footer() {
 															className="h-10 bg-foreground text-background placeholder:text-background/40"
 														/>
 														{isInvalid && (
-															<FieldError errors={field.state.meta.errors} />
+															<FieldError
+																errors={field.state.meta.errors}
+																className="text-start"
+															/>
 														)}
 													</Field>
 												);
 											}}
 										</form.Field>
 										<Field className="w-32">
-											<Button
-												type="submit"
-												className="h-10"
-												onClick={() => setSubmitted(true)}
-											>
+											<Button type="submit" className="h-10">
 												JOIN
 											</Button>
 										</Field>
