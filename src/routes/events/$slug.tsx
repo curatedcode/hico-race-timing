@@ -101,7 +101,7 @@ function RouteComponent() {
 						</span>
 					</div>
 				</div>
-				<div className="mx-auto grid max-w-xl auto-cols-57.5 justify-center gap-4 md:mx-0 md:flex md:flex-col md:items-start md:justify-start">
+				<div className="mx-auto grid max-w-xl auto-cols-75 justify-center gap-4 md:mx-0 md:flex md:auto-cols-57.5 md:flex-col md:items-start md:justify-start">
 					<div className="grid grid-cols-2 gap-4 md:auto-cols-min md:grid-cols-4">
 						<div className="flex h-fit flex-col gap-2 rounded-md border border-foreground/15 bg-secondary px-3 pt-2.5 pb-2 text-center md:text-start">
 							<h2 className="text-foreground/60 text-xs tracking-wider">

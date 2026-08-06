@@ -146,6 +146,13 @@ const fuzzyGrepFilter: FilterFn<ParticipantsTableColumns> = (
 	return terms.every((term) => rowText.includes(term));
 };
 
+function formatColumnTitle(str: string) {
+	const parts = str.split(/(?=[A-Z])/);
+	const uppercase = parts.map((v) => `${v[0]?.toUpperCase()}${v.slice(1)}`);
+
+	return uppercase.join(" ");
+}
+
 export type ParticipantsTableProps = {
 	data?: ParticipantsTableColumns[];
 };
@@ -226,7 +233,7 @@ export function ParticipantsTable({ data = [] }: ParticipantsTableProps) {
 							/>
 							<DropdownMenuContent
 								align="end"
-								className="w-40 bg-background ring-foreground/15"
+								className="w-50 bg-background ring-foreground/15"
 							>
 								{table
 									.getAllColumns()
@@ -239,17 +246,16 @@ export function ParticipantsTable({ data = [] }: ParticipantsTableProps) {
 												onCheckedChange={(value) =>
 													column.toggleVisibility(!!value)
 												}
-												className="h-8 focus:bg-primary"
+												className="h-9 focus:bg-primary"
 											>
-												{column.id[0]?.toUpperCase()}
-												{column.id.slice(1)}
+												{formatColumnTitle(column.id)}
 											</DropdownMenuCheckboxItem>
 										);
 									})}
 							</DropdownMenuContent>
 						</DropdownMenu>
 					</div>
-					<div className="flex justify-between px-2.5 text-foreground/60 text-xs">
+					<div className="flex justify-between pr-3 pl-2.5 text-foreground/60 text-xs">
 						<div>
 							Showing {table.getRowModel().rows.length} of{" "}
 							{table.getFilteredRowModel().rows.length} finishers
@@ -261,7 +267,7 @@ export function ParticipantsTable({ data = [] }: ParticipantsTableProps) {
 					</div>
 				</div>
 			</div>
-			<div className="mx-auto mb-6 max-w-360 overflow-hidden rounded-md rounded-t-none border border-foreground/15 border-t-0">
+			<div className="mx-auto mb-6 max-w-360 overflow-hidden rounded-t-none border border-foreground/15 border-t-0 md:rounded-md">
 				<Table>
 					<TableHeader>
 						{table.getHeaderGroups().map((headerGroup) => (

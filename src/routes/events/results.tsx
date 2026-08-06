@@ -66,7 +66,7 @@ function RouteComponent() {
 
 	return (
 		<main className="pt-12">
-			<div className="mx-auto mb-16 max-w-360 px-3 text-center md:text-start">
+			<div className="mx-auto mb-16 max-w-360 px-4 text-center md:text-start">
 				<SectionBadge>OFFICIAL ARCHIVE</SectionBadge>
 				<h1 className="mb-4 font-bold text-4xl md:text-5xl">Race results</h1>
 				<p className="mx-auto max-w-sm text-foreground/60 md:mx-0 md:max-w-md">

@@ -61,7 +61,7 @@ function RouteComponent() {
 	return (
 		<main className="grid min-h-[90vh] place-items-center bg-secondary pt-16 pb-12 md:pt-0">
 			<div className="mx-auto flex max-w-360 flex-col items-center gap-8 px-2 xl:flex-row xl:items-start xl:gap-0 xl:px-3">
-				<div className="flex max-w-xl flex-col px-3 md:px-0">
+				<div className="flex max-w-xl flex-col px-4 md:px-0">
 					<div className="mb-6 space-y-3 px-1 text-center md:text-start">
 						<div>
 							<SectionBadge>GET IN TOUCH</SectionBadge>

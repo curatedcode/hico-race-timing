@@ -129,7 +129,7 @@ function RouteComponent() {
 			</p>
 			<section
 				id="hero"
-				className="relative flex min-h-[calc(100vh-88px)] justify-center pt-12 md:pt-0 md:pb-12"
+				className="relative flex min-h-[calc(100vh-88px)] justify-center pt-20 md:pt-0 md:pb-12"
 			>
 				<img
 					src="/assets/images/hero.webp"
@@ -138,7 +138,7 @@ function RouteComponent() {
 					fetchPriority="high"
 				/>
 				<div className="absolute top-0 left-0 -z-1 size-full bg-linear-to-b from-background/75 via-background/90 to-background" />
-				<div className="container my-auto max-w-3xl px-2 md:px-3">
+				<div className="container my-auto max-w-3xl px-4 md:px-3">
 					<SectionBadge className="ml-1">
 						EST. 2024 - SEBRING, FLORIDA
 					</SectionBadge>
@@ -196,7 +196,7 @@ function RouteComponent() {
 				</div>
 			</section>
 			<div className="mx-auto mt-40 max-w-360 space-y-40 md:space-y-48">
-				<section id="upcoming-events" className="px-2 md:px-3">
+				<section id="upcoming-events" className="px-4 md:px-3">
 					<div className="mb-10 flex flex-col items-center md:items-start">
 						<SectionBadge>ON THE CALENDAR</SectionBadge>
 						<h1 className="font-bold text-4xl md:text-5xl">Upcoming races</h1>
@@ -224,7 +224,7 @@ function RouteComponent() {
 				</section>
 				<section
 					id="contact"
-					className="flex flex-col items-center gap-8 px-2 md:flex-row md:items-start md:gap-0 md:px-3"
+					className="flex flex-col items-center gap-8 px-4 md:flex-row md:items-start md:gap-0 md:px-3"
 				>
 					<div className="flex max-w-xl flex-col gap-6 text-foreground/60">
 						<div className="flex flex-col items-center md:items-start">
