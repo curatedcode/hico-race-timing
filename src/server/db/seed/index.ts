@@ -185,9 +185,9 @@ await (async () => {
 	await updateResultsRankingsBulk(resultsRankings);
 	console.log("Updated results rankings");
 
-	console.log("Creating awards");
-	await chunkAndInsert(award, createAwards(resultsRankings));
-	console.log("Created awards");
+	// console.log("Creating awards");
+	// await chunkAndInsert(award, createAwards(resultsRankings));
+	// console.log("Created awards");
 
 	const endTimeMS = performance.now();
 
