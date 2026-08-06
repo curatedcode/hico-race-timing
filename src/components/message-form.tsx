@@ -254,7 +254,7 @@ export function MessageForm({ className }: { className?: string }) {
 							<CheckmarkIcon />
 							<p className="mt-1 font-medium">Message sent</p>
 							<p className="text-foreground/60 text-sm">
-								We'll get back to you within 1-2 business days.
+								We'll get back to you within one business day.
 							</p>
 						</div>
 						<Button
