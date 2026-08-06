@@ -18,43 +18,46 @@ function assignRank(
 	timeKey: NumericOrNullKeys<ResultWithGroupParticipant>,
 	arr: ResultWithGroupParticipant[],
 ) {
-	for (let i = arr.length; i > 0; i--) {
-		const result = arr[i - 1];
-		const prevResult = arr[i];
+	for (let i = 0; i < arr.length; i++) {
+		const result = arr[i];
+		const prevResult = arr[i - 1];
 
 		if (!result) {
 			throw new Error(`Unable to assign a ranking to a result`);
 		}
 
-		if (prevResult && result[timeKey] === prevResult[timeKey]) {
+		const isSameTime = result[timeKey] === prevResult?.[timeKey];
+
+		if (isSameTime) {
 			result[rankKey] = prevResult[rankKey] as number;
+			arr[i] = result;
 			continue;
 		}
 
-		result[rankKey] = i;
-		arr[i - 1] = result;
+		// We need to ensure the `rank` doesn't skip numbers so we'll increment from the previous result if available
+		const prevRank = prevResult?.[rankKey] ?? i;
+		result[rankKey] = prevRank + 1;
+		arr[i] = result;
 	}
 
 	return arr;
 }
 
 function assignAgeGroupRank(arr: ResultWithGroupParticipant[]) {
-	const splitIntoAgeGroups: Record<number, ResultWithGroupParticipant[]> = {};
+	const splitIntoAgeGroups: Record<string, ResultWithGroupParticipant[]> = {};
 
 	for (const result of arr) {
-		const ageGroup = splitIntoAgeGroups[result.ageGroupId];
+		const uniqueId = `${result.raceId}-${result.eventId}-${result.ageGroupId}`;
+		const ageGroup = splitIntoAgeGroups[uniqueId] ?? [];
 
-		if (!ageGroup) {
-			splitIntoAgeGroups[result.ageGroupId] = [];
-		}
-
-		splitIntoAgeGroups[result.ageGroupId]?.push(result);
+		ageGroup.push(result);
+		splitIntoAgeGroups[uniqueId] = ageGroup;
 	}
 
 	for (const [key, value] of Object.entries(splitIntoAgeGroups)) {
 		const sortedByChipTime = value.sort((a, b) => a.chipTime - b.chipTime);
 
-		splitIntoAgeGroups[Number(key)] = assignRank(
+		splitIntoAgeGroups[key] = assignRank(
 			"ageGroupRank",
 			"chipTime",
 			sortedByChipTime,
@@ -65,14 +68,14 @@ function assignAgeGroupRank(arr: ResultWithGroupParticipant[]) {
 }
 
 export function updateResultsRankings(results: ResultWithGroupParticipant[]) {
-	const eventGroups: Record<number, ResultWithGroupParticipant[]> = {};
+	const eventGroups: Record<string, ResultWithGroupParticipant[]> = {};
 
 	for (const result of results) {
-		if (!eventGroups[result.eventId]) {
-			eventGroups[result.eventId] = [];
-		}
+		const uniqueId = `${result.raceId}-${result.eventId}`;
+		const group = eventGroups[uniqueId] ?? [];
 
-		eventGroups[result.eventId]?.push(result);
+		group.push(result);
+		eventGroups[uniqueId] = group;
 	}
 
 	for (const [key, group] of Object.entries(eventGroups)) {
@@ -98,7 +101,7 @@ export function updateResultsRankings(results: ResultWithGroupParticipant[]) {
 		const maleAgeRanking = assignAgeGroupRank(maleRanking);
 		const femaleAgeRanking = assignAgeGroupRank(femaleRanking);
 
-		eventGroups[Number(key)] = maleAgeRanking.concat(femaleAgeRanking);
+		eventGroups[key] = maleAgeRanking.concat(femaleAgeRanking);
 	}
 
 	return Object.values(eventGroups).flat();
