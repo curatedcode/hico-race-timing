@@ -245,7 +245,7 @@ export function EventsTable({ data = [] }: EventsTableProps) {
 					</div>
 				</div>
 			</div>
-			<div className="mx-auto mb-6 max-w-360 overflow-hidden rounded-t-none border border-foreground/15 border-t-0 md:rounded-md">
+			<div className="mx-auto mb-6 max-w-360 overflow-hidden border border-foreground/15 border-t-0">
 				<Table>
 					<TableHeader>
 						{table.getHeaderGroups().map((headerGroup) => (
