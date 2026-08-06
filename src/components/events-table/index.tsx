@@ -189,7 +189,7 @@ export function EventsTable({ data = [] }: EventsTableProps) {
 
 	return (
 		<div className="pb-6">
-			<div className="sticky top-18 z-50 border-foreground/15 border-b bg-secondary pt-4 pb-3">
+			<div className="sticky top-16 z-50 border-foreground/15 border-b bg-secondary pt-4 pb-3">
 				<div className="mx-auto max-w-360 space-y-3">
 					<div className="flex items-center gap-1.5 px-1.5">
 						<DebounceInput
