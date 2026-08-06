@@ -20,12 +20,12 @@ export function Navbar() {
 
 	return (
 		<div className="sticky top-0 z-999 bg-background">
-			<div className="mx-auto flex max-w-360 items-center justify-between gap-3 px-2 py-3">
+			<div className="mx-auto flex max-w-360 items-center justify-between gap-3 py-3 pr-2.5 pl-4 md:px-2">
 				<Link to="/" aria-label="Home" className="flex items-center gap-2">
 					<img
 						src="/assets/images/logos/small.webp"
 						alt="HiCo Logo"
-						className="size-12 rounded-full"
+						className="size-10 rounded-full"
 						fetchPriority="high"
 					/>
 					<span className="hidden font-medium sm:block">HICO RACE TIMING</span>
@@ -88,7 +88,7 @@ export function Navbar() {
 						/>
 						<PopoverContent
 							className={{
-								positioner: "pt-5",
+								positioner: "pt-4",
 								popup:
 									"data-[side=bottom]:slide-in-from-top-6 data-open:zoom-in-100 data-closed:zoom-out-100 h-[calc(100vh-4.5rem)] w-screen gap-5 rounded-none bg-background/90 p-0 py-5 text-xl ring-0 backdrop-blur-xs",
 							}}
