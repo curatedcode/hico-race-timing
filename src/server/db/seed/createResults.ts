@@ -71,16 +71,21 @@ export function createResults(registrations: CreateResultsParam) {
 
 		const randomPace = faker.number.int(ageGroupPace.pace);
 		// add a random second advance since gun time is usually slightly ahead
-		const randomAdvance = faker.number.int({ min: 10, max: 90 });
-		const chipTime = Number.parseInt(
-			`${Number.parseFloat(event.distanceKm) * randomPace}`,
-			10,
-		);
+		const randomGunAdvance = faker.number.int({ min: 10, max: 120 });
+		const randomChipAdvance = faker.number.int({
+			min: 0,
+			max: randomGunAdvance,
+		});
+		const chipTime =
+			Number.parseInt(
+				`${Number.parseFloat(event.distanceKm) * randomPace}`,
+				10,
+			) + randomChipAdvance;
 
 		data.push({
 			ageGroupId: ageGroupMatch.id,
 			chipTime,
-			gunTime: chipTime + randomAdvance,
+			gunTime: chipTime + randomGunAdvance,
 			eventId: event.id,
 			participantId: participant.id,
 			raceId: event.raceId,
