@@ -10,8 +10,8 @@ export function getRouter() {
 	const router = createTanStackRouter({
 		routeTree,
 		context,
-		scrollRestoration: true,
 		defaultPreload: "intent",
+		scrollRestorationBehavior: "instant",
 
 		Wrap: (props: { children: ReactNode }) => {
 			return (
