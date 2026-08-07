@@ -227,7 +227,7 @@ function RouteComponent() {
 					className="flex flex-col items-center gap-8 px-4 md:flex-row md:items-start md:gap-0 md:px-3"
 				>
 					<div className="flex max-w-xl flex-col gap-6 text-foreground/60">
-						<div className="flex flex-col items-center md:items-start">
+						<div className="flex flex-col items-center text-center md:items-start md:text-start">
 							<SectionBadge>FOR ORGANIZERS</SectionBadge>
 							<h1 className="font-bold text-4xl text-foreground md:mb-1 md:text-5xl">
 								Planning an event?
